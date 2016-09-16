@@ -21,7 +21,7 @@ ssh user@adresse_ip
 Exemple:
 
 ```
-ssh root@123.234.43.65
+ssh root@111.111.111.111
 ```
 
 ##### 2. Saisir le mot de passe comme demandé
