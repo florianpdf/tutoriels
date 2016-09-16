@@ -26,10 +26,4 @@ root@123.234.43.65
 
 ##### 2. Saisir le mot de passe comme demandé
 
-##### 3. Se déplacer dans le dossier lu par le serveur apache
-
-Exemple:
-
-```
-cd /var/www/html/
-```
+##### 3. Vous etes connecté :-)
