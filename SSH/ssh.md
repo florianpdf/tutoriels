@@ -21,15 +21,9 @@ ssh user@adresse_ip
 Exemple:
 
 ```
-root@123.234.43.65
+ssh root@111.111.111.111
 ```
 
 ##### 2. Saisir le mot de passe comme demandé
 
-##### 3. Se déplacer dans le dossier lu par le serveur apache
-
-Exemple:
-
-```
-cd /var/www/html/
-```
+##### 3. Vous etes connecté :-)
