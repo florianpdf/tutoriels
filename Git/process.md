@@ -1,11 +1,11 @@
 # Un Workflow qui déchire
 
 ## 1. La ou tout commence...
-### 1. Je cré un dépot
-1. **Je cré un repository directement en ligne sur Github en cliquant sur "new repository"**
+### 1. Je crée un dépot
+1. **Je crée un repository directement en ligne sur Github en cliquant sur "new repository"**
 
 Je renseigne le nom du dépot, etc...  
-A près validation, une liste de commande à executer s'affiche.  
+Après validation, une liste de commande à executer s'affiche.  
 Exemple:
 ```
 git init
@@ -14,8 +14,8 @@ git commit -m "first commit"
 git remote add origin https://github.com/florianpdf/hello_world.git
 git push -u origin master
 ```
-Attention, pensez à selectionner une adresse ssh si vous l'avez configurer en amont sur votre machine.  
-Mon dépot est initialiser, et ma liaison entre Git (local) et GitHub (distant) est établit.
+Attention, pensez à selectionner une adresse ssh si vous l'avez configuré en amont sur votre machine.  
+Mon dépot est initialisé, et ma liaison entre Git (local) et GitHub (distant) est établit.
 
 ### 2. Je rejoins un dépot existant
 1. **Je clone le dépot avec la commande *git clone***  
@@ -33,8 +33,8 @@ git clone https://github.com/florianpdf/hello_world.git
 ```
 
 Par défault un dossier *"hello_world"* sera créé, si l'on souhaite cloner dans un dossier différent on ajoute le nom du dossier à la fin de la commande.  
-Exemple:
 
+Exemple:
 ```
 git clone https://github.com/florianpdf/hello_world.git plop
 ```
@@ -70,7 +70,7 @@ Exemple
 git checkout -b dev
 ```
 On a créé la branche *"dev"* puis on s'est déplacé dessus.  
-Une fois sur *"dev"* je peux créer ma branche de travail, il est conseiller de créer une branche par fonctionnalité et non une branche par personne.  
+Une fois sur *"dev"* je peux créer ma branche de travail, il est conseillé de créer une branche par fonctionnalité et non une branche par personne.  
 
 Exemple:
 ```
@@ -81,7 +81,7 @@ Je peux travailler sur ma fonctionnalité sans impacter le reste du travail, ét
 
 ## 3. J'ai terminé
 
-1. **Je contrôle les fichiers modifié grâce à `git status`**  
+1. **Je contrôle les fichiers modifiés grâce à `git status`**  
 
 Exemple:
 
@@ -93,7 +93,7 @@ Cette commande nous affiche les fichiers modifiés depuis le dernier commit.
  
 <dl>
   <dt>Utile:</dt>
-  <dd>La commande "git diff <nom d'un fichier>" permet d'afficher les modification effectuer sur ce fichier depuis le denrier commit</dd>
+  <dd>La commande "git diff <nom d'un fichier>" permet d'afficher les modifications effectuées sur ce fichier depuis le denrier commit</dd>
 </dl>
 
 Exemple:
@@ -104,7 +104,7 @@ git diff index.html
 
 <dl>
   <dt>Utile:</dt>
-  <dd>La commande "git checkout -- <nom du fichier>" annule les modification effectuées sur le ou les fichiers depuis le dernier commit</dd>
+  <dd>La commande "git checkout -- <nom du fichier>" annule les modifications effectuées sur le ou les fichiers depuis le dernier commit</dd>
 </dl>
 
 Exemple:
@@ -117,7 +117,7 @@ Annule les modifs depuis le dernier commit sur index.html
 ```
 git checkout -- .
 ```
-Annuler les modifs depuis le dernier commit sur tous les fichiers modifiés.
+Annule les modifs depuis le dernier commit sur tous les fichiers modifiés.
 
 2. **J'ajoute les fichiers au dépot git grâce à `git add`**  
 
@@ -137,7 +137,7 @@ git add .
 
 Tous les fichiers modifiés seront ajoutés au dépot git.
 
-3. **On commit (fait un photos de la version) grâce à `git commit**
+3. **On commit (fait une photo de la version) grâce à `git commit**
 
 Exemple:
 
@@ -153,7 +153,7 @@ OU
 git commit 
 ```
 
-Un éditeur s'ouvre, à utiliser message pour un message de commit plus long.  
+Un éditeur s'ouvre, à utiliser pour un message de commit plus long.  
 *Attention*: la premier ligne correspond au titre du commit
 
 <dl>
@@ -177,7 +177,7 @@ Je "push" le contenu de la branche slider sur le repository distant sur GitHub.
  
 voir photos
 
-3. **Je cré ma pull request**
+3. **Je crée ma pull request**
 
 voir photo
 
@@ -189,43 +189,42 @@ Une fois la pull request proposer, je peux continuer à travailler.
 > La pull request permet de fusionner un travail à l'issue d'une validation contrairement au merge fait directement dans le temrinal  
 La personne qui valide la pull request peut re-lire le code, le commenter, et pourquoi pas refuser la demande de fusion.
  
-> #### Cas 1: **Je reste sur la même branche car ma fonctionnalité n'est pas terminé**
+> #### Cas 1: Je reste sur la même branche car ma fonctionnalité n'est pas terminé
 > Je retourne sur mon terminale.  
 > Je dois mettre à jour ma branche par rapport au reste du projet  
 > 1. Je retourne sur la branche dev afin de mettre le projet à jour  
 `git checkout dev`  
-> 2. Je met à jour dev  
+> 2. Je mets à jour dev  
 `git pull origin dev`  
 > 3. Je reviens sur ma branche  
 `git checkout slider`  
-> 4. Je met à jour ma branche par rapport à dev  
+> 4. Je mets à jour ma branche par rapport à dev  
 `git merge dev`  
 > 5. Je suis à jour par rapport à la branche dev, je peux continuer à travailler  
 
-> #### Cas 2: **J'ai terminé ma fonctionnalité**
+> #### Cas 2: J'ai terminé ma fonctionnalité
 > Je retourne sur mon terminale.  
 > Je dois supprimer ma branche et en créer une nouvelle  
 > 1. Je retourne sur la branche dev afin de mettre le projet à jour  
 `git checkout dev`  
-> 1. Je met à jour    
+> 1. Je mets à jour    
 `git pull origin dev`  
-> 3. Je supprimer ma branche avec *"git branch -D"*  
+> 3. Je supprime ma branche avec *"git branch -D"*  
 `git branch -D slider`  
-> 4. Je cré ma nouvelle branche et me déplace dessus (je suis actuellement sur dev) *"git checkout -b"*  
+> 4. Je crée ma nouvelle branche et me déplace dessus (je suis actuellement sur dev) *"git checkout -b"*  
 `git checkout -b formulaire`  
-> 5. Je peux commencer à travailler sur ma nouvelle fonctionnalité  
-`git merge dev`  
-> 6. Je suis à jour par rapport à la branche dev, je peux continuer à travailler 
-> 7. Une fois ma pull-request accepté, je pense également à supprimer ma branche sur GiyHub
+> 5. Je peux commencer à travailler sur ma nouvelle fonctionnalité    
+> 6. Je suis à jour par rapport à la branche dev car la branche formulaire à été créé depuis dev.   
+> 7. Une fois ma pull-request acceptée, je pense également à supprimer ma branche sur GiyHub
 
-### Cas 2: **"Can’t automatically merge."** 
+### Cas 2: "Can’t automatically merge." 
 
 > Tu as un conflit entre les deux branches, soit les deux versions de ton programme.  
 Git ne peut pas décider à ta place ce qui est bon ou mauvais, tu vas devoir résoudre les conflits.  
 Afin de faciliter le travail d'équipe, c'est toujours celui qui propose une version qui règle les conflits.
 > 1. Je retourne sur la branche dev afin de mettre le projet à jour  
 `git checkout dev`  
-> 1. Je met à jour    
+> 1. Je mets à jour    
 `git pull origin dev`  
 > 3. Je retourne sur ma branche avec *"git checkout"* 
 `git checkout slider`  
@@ -238,7 +237,7 @@ Afin de faciliter le travail d'équipe, c'est toujours celui qui propose une ver
 > `git commit -m "fix conflits"`  
 > `git push origin slider`  
 > 6. Je retourne proposer ma version via une pull request, si j'ai bien résolu tous mes conflits, le message "Able to merge" 
-devrait apparaitre.  
+doit apparaitre.  
 
 > #### Ce n'est pas à moi d'accepter ma pull request mais à un autre membre du groupe
 > La pull request permet de fusionner un travail à l'issue d'une validation contrairement au merge fait directement dans le temrinal  
@@ -249,11 +248,11 @@ La personne qui valide la pull request peut re-lire le code, le commenter, et po
 > Je dois mettre à jour ma branche par rapport au reste du projet  
 > 1. Je retourne sur la branche dev afin de mettre le projet à jour  
 `git checkout dev`  
-> 2. Je met à jour dev  
+> 2. Je mets à jour dev  
 `git pull origin dev`  
 > 3. Je reviens sur ma branche  
 `git checkout slider`  
-> 4. Je met à jour ma branche par rapport à dev  
+> 4. Je mets à jour ma branche par rapport à dev  
 `git merge dev`  
 > 5. Je suis à jour par rapport à la branche dev, je peux continuer à travailler  
 
@@ -268,7 +267,6 @@ La personne qui valide la pull request peut re-lire le code, le commenter, et po
 `git branch -D slider`  
 > 4. Je cré ma nouvelle branche et me déplace dessus (je suis actuellement sur dev) *"git checkout -b"*  
 `git checkout -b formulaire`  
-> 5. Je peux commencer à travailler sur ma nouvelle fonctionnalité  
-`git merge dev`  
-> 6. Je suis à jour par rapport à la branche dev, je peux continuer à travailler 
-> 7. Une fois ma pull-request accepté, je pense également à supprimer ma branche sur GiyHub
+> 5. Je peux commencer à travailler sur ma nouvelle fonctionnalité 
+> 6. Je suis à jour par rapport à la branche dev 
+> 7. Une fois ma pull-request accepté, je pense également à supprimer ma branche sur GitHub
