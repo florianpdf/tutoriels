@@ -1,5 +1,16 @@
 # Un Workflow qui déchire
 
+##Sommaire:
+
+1. Je crée un dépot (new repository, git init)
+2. Je rejoins un dépot existant (git clone)
+3. Je crée une branche (git branch)
+4. Je vérifie (git status)
+5. J'ajoute (git add)
+6. Je commit (git commit)
+7. Je push (git push)
+8. Je partage (pull request, merge)
+
 ## 1. La ou tout commence...
 ### 1. Je crée un dépot
 1. **Je crée un repository directement en ligne sur Github en cliquant sur "new repository"**
