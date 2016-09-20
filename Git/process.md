@@ -66,7 +66,7 @@ Cette branche sera considéré comme la branche de "pre-production".
 
 ```
 git branch <nom de la branche> ==> création
-git chekcout <nom de la branche> ==> on se déplace sur la branche
+git checkout <nom de la branche> ==> on se déplace sur la branche
 ```
 
 OU
