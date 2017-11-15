@@ -145,3 +145,91 @@ Ici, si l'utilisateur ne renseigne rien dans l'url, la méthode **indexAction()*
 
 11. Ouvrir index.php dans le navigateur, *Hello world* doit s'afficher
 
+12. On va maintenant transmettre des infos du controller vers la vue
+	1. Dans la methode **indexAction()** du fichier **DefaultController.php**, déclarer une variable qui contient des infos sur des utilisateurs.
+	```
+	$users = [
+		[
+			'prenom' => "Florian",
+			'nom' => "Grandjean",
+			'age' => "28"
+		],
+		[
+			'prenom' => "Alexis",
+			'nom' => "Ducerf",
+			'age' => "28"
+		],
+	];
+	```
+	2. On va modifier le return de la méthode en renvoyant une vue avec de la donnée
+	```
+	return $this->twig->render('user/home.html.twig', array(
+		'users' => $users
+	));
+	```
+	Notre **DefaultController.php** doit maintenant ressembler à ça.
+	```
+	<?php
+
+	namespace MyApp\Controllers;
+
+	/**
+	 * Class DefaultController
+	 * @package MyApp\Controllers
+	 */
+	class DefaultController extends Controller
+	{
+		/**
+		 * Render index
+		 */
+		public function indexAction(){
+
+			$users = [
+				[
+					'prenom' => "Florian",
+					'nom' => "Grandjean",
+					'age' => "28"
+				],
+				[
+					'prenom' => "Alexis",
+					'nom' => "Ducerf",
+					'age' => "28"
+				],
+			];
+
+			return $this->twig->render('home.html.twig', array(
+				'users' => $users
+			));
+		}
+	}
+	```
+
+13. Dernière étape, traiter l'information dans notre vue
+	1. Dans le fichier **home.html.twig**, nous pouvons maintenant utiliser une variable**users**, cette dernière nous a été renvoyé par notre methode **indexAction()**
+	La variable **users** est un tableau d'utilisateurs, il faut donc boucler dessus.
+	2. Dans **home.html.twig**, déclarer une boucle qui nous permet d'afficher tout nos utilisateurs
+	```
+	{% for user in users %}
+        <ul>
+            <li>{{ user.prenom }}</li>
+            <li>{{ user.nom }}</li>
+            <li>{{ user.age }}</li>
+        </ul>
+    {% endfor %}
+	```
+	3. Notre fichier **home.html.twig** doit maintenant ressembler à ça:
+	```
+	{% extends 'layout.html.twig' %}
+
+	{% block body %}
+	    
+	    {% for user in users %}
+	        <ul>
+	            <li>{{ user.prenom }}</li>
+	            <li>{{ user.nom }}</li>
+	            <li>{{ user.age }}</li>
+	        </ul>
+	    {% endfor %}
+	    
+	{% endblock %}
+	```
