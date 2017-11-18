@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Hello World</h1>
+    {% for user in users %}
+        <ul>
+            <li>{{ user.prenom }}</li>
+            <li>{{ user.nom }}</li>
+            <li>{{ user.age }}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}
