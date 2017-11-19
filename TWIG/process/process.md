@@ -1,4 +1,4 @@
-# Mise en place d'une architecture "type" en suivant le design pattern MVC
+# Mise en place d'une architecture "type" en suivant le design pattern MVC - Part 1
 
 ## 1. Installation de composer via terminal en Global
 ```
@@ -56,7 +56,7 @@ Source:
 4. Déclarer **__construct** avec la configuration de twig
 5. Si besoin, ajouter d'autres option (debug)
 6. Ci dessous, une configuration type), penser à remplacer **MyApp** par votre namespace global que vous avez défini dans le **composer.json**
-```
+```php
 <?php
 
 namespace MyApp\Controllers;
@@ -99,7 +99,7 @@ Source:
 1. Créer un fichier **DefaultController.php** dans le dossier **Controllers**
 2. Dans ce fichier déclarer une class **DefaultController** qui va hériter de la class **Controller* (pour rappel, la class controller dispose de la configuration de twig, DefaultController pourra donc profiter de cette configutation)  
 Remplacer **MyApp** par votre namespace global defini dans le **composer.json**
-```
+```php
 <?php
 
 namespace MyApp\Controllers;
@@ -119,7 +119,7 @@ class DefaultController extends Controller
 C'est un fichier qui analyse les éléments se trouvant dans l'url de l'utilisateur.
 Ajouter les lignes ci dessous.
 Penser à faire un require de l'autoload.
-```
+```php
 <?php
 
 // Get Vendor autoload
@@ -137,7 +137,7 @@ Ici, si l'utilisateur ne renseigne rien dans l'url, la méthode **indexAction()*
 
 ## 8. Définition de la méthode indexAction() dans le **DefaultController**
 1. Dans le fichier **DefaultController**, créer de la methode **indexAction()** qui va retourner vers la vue "home.html.twig" (cette dernière n'existe pas encore)
-```
+```php
 public function indexAction(){
     return $this->twig->render('user/home.html.twig');
 }
@@ -146,7 +146,7 @@ public function indexAction(){
 ## 9. Création de la vue
 1. Dans le dossier views, création dans un premier temps de la structure général de notre html
 2. Créer d'un fichier **layout.html.twig** et ajouter la structure html "type"
-```
+```twig
 <!doctype html>
 <html lang="fr">
 <head>
@@ -165,7 +165,7 @@ Dans ce dernier, on défini un emplacement qui accueillera le contenu de nos dif
 
 ## 10. Création de la vue **home.html.twig**
 1. Dans le dossier **Views**, créer un fichier **home.html.twig**. Ce dernier va hériter de la structure html global (notre layout.html.twig).
-```
+```twig
 {% extends 'layout.html.twig' %}
 
 {% block body %}
@@ -178,28 +178,28 @@ Tout ce qui sera défini à l'intérieur du block body viendra se positionner à
 
 ## 12. On va maintenant transmettre des infos du controller vers la vue
 1. Dans la methode **indexAction()** du fichier **DefaultController.php**, déclarer une variable qui contient des infos sur des utilisateurs.
-	```
-	$users = [
-		[
-			'prenom' => "Florian",
-			'nom' => "Grandjean",
-			'age' => "28"
-		],
-		[
-			'prenom' => "Alexis",
-			'nom' => "Ducerf",
-			'age' => "28"
-		],
-	];
-	```
+```php
+$users = [
+    [
+        'firstname' => "Florian",
+        'name' => "Grandjean",
+        'age' => "28"
+    ],
+    [
+        'firstname' => "Alexis",
+        'name' => "Ducerf",
+        'age' => "28"
+    ],
+];
+```
 2. On va modifier le return de la méthode en renvoyant une vue avec de la donnée
-	```
+	```php
 	return $this->twig->render('home.html.twig', array(
 		'users' => $users
 	));
 	```
     Notre **DefaultController.php** doit maintenant ressembler à ça.
-	```
+	```php
 	<?php
 
 	namespace MyApp\Controllers;
@@ -216,17 +216,17 @@ Tout ce qui sera défini à l'intérieur du block body viendra se positionner à
 		public function indexAction(){
 
 			$users = [
-				[
-					'prenom' => "Florian",
-					'nom' => "Grandjean",
-					'age' => "28"
-				],
-				[
-					'prenom' => "Alexis",
-					'nom' => "Ducerf",
-					'age' => "28"
-				],
-			];
+                [
+                    'firstname' => "Florian",
+                    'name' => "Grandjean",
+                    'age' => "28"
+                ],
+                [
+                    'firstname' => "Alexis",
+                    'name' => "Ducerf",
+                    'age' => "28"
+                ],
+            ];
 
 			return $this->twig->render('home.html.twig', array(
 				'users' => $users
@@ -239,27 +239,27 @@ Tout ce qui sera défini à l'intérieur du block body viendra se positionner à
 1. Dans le fichier **home.html.twig**, nous pouvons maintenant utiliser une variable**users**, cette dernière nous a été renvoyé par notre methode **indexAction()**  
 La variable **users** est un tableau d'utilisateurs, il faut donc boucler dessus.
 2. Dans **home.html.twig**, déclarer une boucle qui nous permet d'afficher tout nos utilisateurs
-	```
+	```twig
 	{% for user in users %}
         <ul>
-            <li>{{ user.prenom }}</li>
-            <li>{{ user.nom }}</li>
+            <li>{{ user.firstname }}</li>
+            <li>{{ user.name }}</li>
             <li>{{ user.age }}</li>
         </ul>
     {% endfor %}
 	```
 	3. Notre fichier **home.html.twig** doit maintenant ressembler à ça:
-	```
+	```twig
 	{% extends 'layout.html.twig' %}
 
 	{% block body %}
 	    
 	    {% for user in users %}
-	        <ul>
-	            <li>{{ user.prenom }}</li>
-	            <li>{{ user.nom }}</li>
-	            <li>{{ user.age }}</li>
-	        </ul>
+            <ul>
+                <li>{{ user.firstname }}</li>
+                <li>{{ user.name }}</li>
+                <li>{{ user.age }}</li>
+            </ul>
 	    {% endfor %}
 	    
 	{% endblock %}
