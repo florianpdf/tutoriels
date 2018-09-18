@@ -1,6 +1,6 @@
 # Un Workflow qui déchire
 
-##Sommaire:
+## Sommaire:
 
 1. Je crée un dépot (new repository, git init)
 2. Je rejoins un dépot existant (git clone)
