@@ -55,7 +55,7 @@ Un dossier *"plop"* sera créé et le projet sera cloné à l'intérieur.
 ## 2. Je me met à travailler
 1. **Créer les branches**  
 
-La première branche à créer est la branche *"dev"* ou *"develop"*.  
+La première branche à créer est la branche *"dev"*.  
 Cette branche sera considéré comme la branche de "pre-production".
 
 <dl>
@@ -72,7 +72,7 @@ git checkout <nom de la branche> ==> on se déplace sur la branche
 OU
 
 ```
-git checkout -b <nom de la branche> ==> on cré et on se déplace en même temps
+git checkout -b <nom de la branche> ==> on crée et on se déplace en même temps
 ```
 
 Exemple
@@ -148,7 +148,7 @@ git add .
 
 Tous les fichiers modifiés seront ajoutés au dépot git.
 
-3. **On commit (fait une photo de la version) grâce à `git commit**
+3. **On commit (fait une photo de la version) grâce à `git commit`**
 
 Exemple:
 
@@ -170,6 +170,7 @@ Un éditeur s'ouvre, à utiliser pour un message de commit plus long.
 <dl>
   <dt>Utile:</dt>
   <dd>La commande "git log" affiche les derniers commit ainsi que leurs messages</dd>
+  <dd>La commande "git log --graph --oneline --all" montre les mêmes logs, mais de façon plus graphique</dd>
 </dl>
 
 4. **Je met en ligne sur sur GitHub grâce à *"git push"***
@@ -195,13 +196,13 @@ voir photo
 ### Cas 1:  **"Able to merge"**  
 
 >Pas de conflit entre les branches, je peux proposer la pull request.  
-Une fois la pull request proposer, je peux continuer à travailler.  
-> #### Ce n'est pas à moi d'accepter ma pull request mais à un autre membre du groupe
-> La pull request permet de fusionner un travail à l'issue d'une validation contrairement au merge fait directement dans le temrinal  
+Une fois la pull request proposée, je peux continuer à travailler.  
+> #### Ce n'est pas à moi d'accepter ma pull request, mais à un autre membre du groupe
+> La pull request permet de fusionner un travail à l'issue d'une validation, contrairement au merge fait directement dans le terminal  
 La personne qui valide la pull request peut re-lire le code, le commenter, et pourquoi pas refuser la demande de fusion.
  
-> #### Cas 1: Je reste sur la même branche car ma fonctionnalité n'est pas terminé
-> Je retourne sur mon terminale.  
+> #### Cas 1: Je reste sur la même branche car ma fonctionnalité n'est pas terminée
+> Je retourne sur mon terminal.  
 > Je dois mettre à jour ma branche par rapport au reste du projet  
 > 1. Je retourne sur la branche dev afin de mettre le projet à jour  
 `git checkout dev`  
@@ -214,7 +215,7 @@ La personne qui valide la pull request peut re-lire le code, le commenter, et po
 > 5. Je suis à jour par rapport à la branche dev, je peux continuer à travailler  
 
 > #### Cas 2: J'ai terminé ma fonctionnalité
-> Je retourne sur mon terminale.  
+> Je retourne sur mon terminal.  
 > Je dois supprimer ma branche et en créer une nouvelle  
 > 1. Je retourne sur la branche dev afin de mettre le projet à jour  
 `git checkout dev`  
@@ -226,7 +227,7 @@ La personne qui valide la pull request peut re-lire le code, le commenter, et po
 `git checkout -b formulaire`  
 > 5. Je peux commencer à travailler sur ma nouvelle fonctionnalité    
 > 6. Je suis à jour par rapport à la branche dev car la branche formulaire à été créé depuis dev.   
-> 7. Une fois ma pull-request acceptée, je pense également à supprimer ma branche sur GiyHub
+> 7. Une fois ma pull-request acceptée, je pense également à supprimer ma branche sur GitHub
 
 ### Cas 2: "Can’t automatically merge." 
 
@@ -243,19 +244,18 @@ Afin de faciliter le travail d'équipe, c'est toujours celui qui propose une ver
 `git merge dev`  
 > 5. La liste des conflits apparait dans le terminal  
 > 6. Je résous les conflits
-> 7. Une fois les conflits résolut, j'ajoute, commit et push à nouveau  
+> 7. Une fois les conflits résolus, j'ajoute, commit et push à nouveau  
 > `git add .`  
 > `git commit -m "fix conflits"`  
 > `git push origin slider`  
-> 6. Je retourne proposer ma version via une pull request, si j'ai bien résolu tous mes conflits, le message "Able to merge" 
-doit apparaitre.  
+> 6. Je retourne proposer ma version via une pull request, si j'ai bien résolu tous mes conflits, le message "Able to merge" doit apparaitre.  
 
-> #### Ce n'est pas à moi d'accepter ma pull request mais à un autre membre du groupe
-> La pull request permet de fusionner un travail à l'issue d'une validation contrairement au merge fait directement dans le temrinal  
+> #### Ce n'est pas à moi d'accepter ma pull request, mais à un autre membre du groupe
+> La pull request permet de fusionner un travail à l'issue d'une validation, contrairement au merge fait directement dans le terminal  
 La personne qui valide la pull request peut re-lire le code, le commenter, et pourquoi pas refuser la demande de fusion.
  
-> #### Cas 1: **Je reste sur la même branche car ma fonctionnalité n'est pas terminé**
-> Je retourne sur mon terminale.  
+> #### Cas 1: **Je reste sur la même branche car ma fonctionnalité n'est pas terminée**
+> Je retourne sur mon terminal.  
 > Je dois mettre à jour ma branche par rapport au reste du projet  
 > 1. Je retourne sur la branche dev afin de mettre le projet à jour  
 `git checkout dev`  
@@ -274,10 +274,10 @@ La personne qui valide la pull request peut re-lire le code, le commenter, et po
 `git checkout dev`  
 > 1. Je met à jour    
 `git pull origin dev`  
-> 3. Je supprimer ma branche avec *"git branch -D"*  
+> 3. Je supprime ma branche avec *"git branch -D"*  
 `git branch -D slider`  
-> 4. Je cré ma nouvelle branche et me déplace dessus (je suis actuellement sur dev) *"git checkout -b"*  
+> 4. Je crée ma nouvelle branche et me déplace dessus (je suis actuellement sur dev) *"git checkout -b"*  
 `git checkout -b formulaire`  
 > 5. Je peux commencer à travailler sur ma nouvelle fonctionnalité 
 > 6. Je suis à jour par rapport à la branche dev 
-> 7. Une fois ma pull-request accepté, je pense également à supprimer ma branche sur GitHub
+> 7. Une fois ma pull-request acceptée, je pense également à supprimer ma branche sur GitHub
