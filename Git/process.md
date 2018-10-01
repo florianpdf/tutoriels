@@ -11,7 +11,7 @@
 7. Je push (git push)
 8. Je partage (pull request, merge)
 
-## 1. La ou tout commence...
+## 1. Là où tout commence...
 ### 1. Je crée un dépot
 1. **Je crée un repository directement en ligne sur Github en cliquant sur "new repository"**
 
